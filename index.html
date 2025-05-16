@@ -3,251 +3,203 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Lucas – Backend Developer CV, skills, experience and projects" />
-  <title>Lucas | CV</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-p1Cm3Q+uP8uYKXHcSNZ5pBzVbY3B+t0XIv0XASh2mGfP9mgG2pi1jA1ZmM/0JjhJJt0/6wA4+3VdBAlTReanHw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta name="description" content="Lucas – AI-style CV, skills & demos" />
+  <title>Lucas | AI-CV</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet"/>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+          integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   <style>
     :root {
-      --font-sans: 'Poppins', sans-serif;
-      --color-bg: #f0f2f5;
-      --color-white: #fff;
-      --color-dark: #333;
-      --color-accent: #0066cc;
-      --spacing: 1rem;
+      --bg: #0b0b0b;
+      --card-bg: rgba(20,20,20,0.85);
+      --accent: #00ffea;
+      --text: #e0e0e0;
+      --shadow: 0 0 10px var(--accent);
       --radius: 8px;
-      --shadow: 0 2px 8px rgba(0,0,0,0.1);
+      --gap: 1.5rem;
+      --font-mono: 'Roboto Mono', monospace;
+      --font-display: 'Orbitron', sans-serif;
     }
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
+
+    *, *::before, *::after {
+      box-sizing: border-box;
       margin: 0;
-      font-family: var(--font-sans);
-      background: var(--color-bg);
-      color: var(--color-dark);
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
       line-height: 1.5;
     }
-    a { color: var(--color-accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: text-shadow .2s;
+    }
+    a:hover {
+      text-shadow: 0 0 8px var(--accent);
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      color: var(--accent);
+      margin-bottom: .5rem;
+    }
 
     .container {
-      max-width: 960px;
-      margin: var(--spacing) auto;
       display: grid;
       grid-template-columns: 1fr 2fr;
-      gap: calc(var(--spacing)*2);
-      padding: var(--spacing);
+      gap: var(--gap);
+      max-width: 1000px;
+      margin: var(--gap) auto;
+      padding: var(--gap);
     }
 
-    /* SIDEBAR */
-    aside {
-      background: var(--color-white);
-      padding: var(--spacing);
+    aside, main {
+      background: var(--card-bg);
+      border: 1px solid var(--accent);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      padding: var(--gap);
     }
+
     .profile-photo {
       display: block;
       width: 100px; height: 100px;
-      margin: 0 auto var(--spacing);
+      margin: 0 auto var(--gap);
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--color-accent);
+      border: 2px solid var(--accent);
     }
+
+    /* Sidebar */
     aside h2 {
       text-align: center;
-      margin: 0 0 var(--spacing)/2;
-      font-size: 1.5rem;
-      color: var(--color-accent);
+      font-size: 1.4rem;
     }
     aside p.location {
       text-align: center;
-      font-size: 0.9rem;
-      color: #666;
-      margin-bottom: var(--spacing);
+      color: #888;
+      margin-bottom: var(--gap);
+      font-size: .9rem;
     }
-    aside section + section { margin-top: calc(var(--spacing)*1.5); }
+    aside section + section {
+      margin-top: var(--gap);
+    }
     aside h3 {
       font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      color: var(--color-accent);
-      border-bottom: 2px solid var(--color-accent);
-      display: inline-block;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: .3rem;
+      margin-bottom: .5rem;
     }
     aside ul {
       list-style: none;
-      padding: 0;
-      margin-top: 0.5rem;
     }
     aside li {
-      font-size: 0.95rem;
-      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      margin-bottom: .6rem;
     }
-    aside li i { width: 1em; text-align: center; margin-right: 0.5em; }
+    aside li i {
+      width: 1.2em;
+      text-align: center;
+      margin-right: .5em;
+      color: var(--accent);
+    }
 
-    /* MAIN */
-    main {
-      background: var(--color-white);
-      padding: var(--spacing);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
+    /* Main */
     main h2 {
       font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--color-accent);
-      border-bottom: 2px solid var(--color-accent);
+      border-bottom: 1px solid var(--accent);
       display: inline-block;
+      margin-bottom: .75rem;
     }
-    .timeline {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-top: 1rem;
+    main section + section {
+      margin-top: var(--gap);
     }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 3px;
-      background: var(--color-accent);
-      border-radius: var(--radius);
-    }
-    .entry {
-      position: relative;
-      margin-bottom: 1.5rem;
-      padding-left: 1rem;
-    }
-    .entry::before {
-      content: '';
-      position: absolute;
-      left: -6px; top: 0.2rem;
-      width: 12px; height: 12px;
-      background: var(--color-white);
-      border: 3px solid var(--color-accent);
-      border-radius: 50%;
-    }
-    .entry time {
-      font-size: 0.9rem;
-      color: #666;
-      display: block;
-    }
-    .entry h3 {
-      margin: 0.2rem 0;
-      font-size: 1.05rem;
-      color: var(--color-dark);
-    }
-    .entry h4 {
-      margin: 0;
-      font-size: 0.95rem;
-      font-style: italic;
-      color: #555;
-    }
-    .entry p {
-      margin-top: 0.5rem;
-      font-size: 0.95rem;
-      color: #444;
+    main p {
+      color: #ccc;
+      margin-top: .5rem;
     }
 
-    @media (max-width: 700px) {
-      .container { grid-template-columns: 1fr; }
-      aside, main { margin-bottom: var(--spacing)*2; }
+    .demos ul {
+      list-style: none;
+      margin: .5rem 0 0;
+    }
+    .demos li {
+      margin-bottom: 1rem;
+    }
+    .demos li strong {
+      display: block;
+      margin-bottom: .3rem;
+      font-size: 1.05rem;
+    }
+    .demos li a {
+      font-size: .95rem;
+      margin-right: 1rem;
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- SIDEBAR -->
     <aside>
-      <header>
-        <img src="profile.webp" alt="Lucas’s profile photo" class="profile-photo"/>
-        <h2>Lucas</h2>
-        <p class="location"><i class="fas fa-map-marker-alt"></i> Preah Sihanouk, Cambodia</p>
-      </header>
+      <img src="profile.webp" alt="Lucas’s photo" class="profile-photo"/>
+      <h2>Lucas</h2>
+      <p class="location"><i class="fas fa-map-marker-alt"></i> Preah Sihanouk, Cambodia</p>
 
       <section>
         <h3>Contact</h3>
         <ul>
-          <li><i class="fas fa-envelope"></i> <a href="mailto:lucas67165@gmail.com">lucas67165@gmail.com</a></li>
-          <li><i class="fab fa-github"></i> <a href="https://github.com/lucas67165" target="_blank">github.com/lucas67165</a></li>
+          <li><i class="fas fa-envelope"></i><a href="mailto:lucas67165@gmail.com">lucas67165@gmail.com</a></li>
+          <li><i class="fab fa-github"></i><a href="https://github.com/lucas67165" target="_blank">github.com/lucas67165</a></li>
+          <li><i class="fas fa-robot"></i><a href="https://huggingface.co/lucas67165" target="_blank">huggingface.co/lucas67165</a></li>
         </ul>
       </section>
 
       <section>
         <h3>Skills</h3>
         <ul>
-          <li><strong>DB:</strong> MySQL, PostgreSQL, SQL Server</li>
-          <li><strong>Web:</strong> Typecho, Laravel, Django, CodeIgniter, WordPress, Spring Boot, Odoo (ERP)</li>
-          <li><strong>Lang:</strong> Java, Python, PHP</li>
-          <li><strong>Tools:</strong> FFmpeg, MyBatis, Redis</li>
-          <li><strong>VCS:</strong> GitHub, GitLab</li>
+          <li><i class="fas fa-database"></i>MySQL · PostgreSQL · SQL Server</li>
+          <li><i class="fas fa-laptop-code"></i>Laravel · Django · Spring Boot · Odoo · Typecho · CodeIgniter · WordPress</li>
+          <li><i class="fas fa-terminal"></i>PHP (7 yrs+) · Java (2 yrs+) · Python</li>
+          <li><i class="fas fa-tools"></i>FFmpeg · MyBatis · Redis</li>
+          <li><i class="fas fa-brain"></i>AI/ML: PyTorch · Transformers · Scikit-learn · Hugging Face</li>
+          <li><i class="fas fa-code-branch"></i>GitHub · GitLab</li>
         </ul>
       </section>
     </aside>
 
+    <!-- MAIN CONTENT -->
     <main>
       <section>
         <h2>Profile</h2>
         <p>
-          Passionate backend developer with 4+ years building scalable Java/Spring Boot services, optimizing databases (MySQL & Redis), and automating multimedia workflows.
+          Backend developer just starting with AI—PHP 7 years+; 2 years building high-performance Java/Spring Boot services, optimizing MySQL & Redis workflows, and now diving into ML demos.
         </p>
       </section>
 
-      <section>
-        <h2>Experience</h2>
-        <div class="timeline">
-          <div class="entry">
-            <time datetime="2024-04">Apr 2024 – Present</time>
-            <h3>Senior Backend Developer</h3>
-            <h4>@ LucasTech</h4>
-            <p>Led API redesign for live-streaming platform; improved throughput by 40% and cut latency by 25%.</p>
-          </div>
-          <div class="entry">
-            <time datetime="2018-09">Sep 2018 – May 2023</time>
-            <h3>Full Stack Developer</h3>
-            <h4>@ MEF</h4>
-            <p>Built help-desk & asset-management (Odoo), office automation (Django) and Laravel systems.</p>
-          </div>
-          <div class="entry">
-            <time datetime="2016-01">Jan 2016 – Aug 2018</time>
-            <h3>Full Stack Developer</h3>
-            <h4>@ OneTechnology</h4>
-            <p>Developed loan/installment management (Nova) and POS (Laravel) solutions.</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>Education</h2>
-        <div class="timeline">
-          <div class="entry">
-            <time datetime="2012-01">2012 – 2016</time>
-            <h3>B.Sc. Computer Science</h3>
-            <h4>@ Royal University of Phnom Penh</h4>
-            <p>Graduated with honors; thesis on database scaling techniques.</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>Featured Projects</h2>
-        <div class="timeline">
-          <div class="entry">
-            <time datetime="2023-01">2023</time>
-            <h3>m3u8-Downloader</h3>
-            <p>Electron + FFmpeg tool with retry logic and progress UI.</p>
-          </div>
-          <div class="entry">
-            <time datetime="2022-01">2022</time>
-            <h3>Live Video Streaming</h3>
-            <p>Low-latency WebSocket & Spring Boot streaming service.</p>
-          </div>
-          <div class="entry">
-            <time datetime="2021-01">2021</time>
-            <h3>Loan & Installments</h3>
-            <p>Subscription-based loan management SaaS (Spring Boot + MyBatis).</p>
-          </div>
-        </div>
+      <section class="demos">
+        <h2>AI &amp; Demos</h2>
+        <ul>
+          <li>
+            <strong>🐶 vs 🐱 Classifier</strong>
+            <a href="https://lucas67165.github.io/cat-and-dog-classify/" target="_blank">GitHub Pages</a>
+            <a href="https://lucas67165-minimal.hf.space/" target="_blank">HF Space</a>
+          </li>
+        </ul>
       </section>
     </main>
   </div>
